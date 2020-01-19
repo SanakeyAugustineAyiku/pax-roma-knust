@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{config('app.name', 'IMCS Pax Romana KNUST')}}</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    {{-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /> --}}
     <link rel="stylesheet" href="{{ asset('/css/app.css') }} " />
     @yield('styles')
 </head>
 
 <body>
-    <div class="loader">
+    {{-- <div class="loader">
         <div class="preloader-wrapper big active">
             <div class="spinner-layer spinner-blue">
                 <div class="circle-clipper left">
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="main-container">
         @yield('content')
     </div>
@@ -77,7 +77,7 @@
                 document.querySelector(".loader").hidden = true;
             }, 3000);
         };
-        showLoader();
+      //  showLoader();
 
         //sidenav
 $('.sidenav').sidenav();

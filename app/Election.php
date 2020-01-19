@@ -12,6 +12,11 @@ class Election extends Model
      * @var array
      */
     protected $fillable = [
-        'election_category', 'period', 'start', 'end',
+        'election_category', 'period', 'start', 'end','status',
     ];
+
+    public function election_candidate()
+    {
+        return $this->belongsTo('App\ElectionCandidate',['election_category','election_name'],['election_category','period']);
+    }
 }

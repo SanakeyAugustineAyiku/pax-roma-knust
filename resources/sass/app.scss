@@ -1,5 +1,9 @@
 @import "~materialize-css/sass/materialize.scss";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "mixins.scss";
 @import "dashboard.scss";
+@import "styles.scss";
+
 .loader {
     position: fixed;
     top: 50%;

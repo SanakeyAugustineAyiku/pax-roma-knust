@@ -6,7 +6,7 @@
     <div class="col s12 m6 l4">
         <div class="card sticky-action">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="{{ asset('/images/LOGO_PAX.png')}}">
+                <img class="activator" src="{{ ($member->avatar) ? asset($member->avatar) : asset('/images/LOGO_PAX.png')}}">
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{$member->fullname}}<i

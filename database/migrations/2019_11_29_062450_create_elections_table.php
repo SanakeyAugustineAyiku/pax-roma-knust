@@ -19,6 +19,7 @@ class CreateElectionsTable extends Migration
             $table->string('period');
             $table->dateTime('start');
             $table->dateTime('end');
+            $table->string('status')->default('pending');
             $table->timestamps();
             $table->primary(['election_category', 'period']);
 

@@ -15,7 +15,13 @@ class ElectionCandidate extends Model
         "name",
         "avatar",
         "position",
+        "election_name",
         "election_category",
         "votes",
     ];
+
+    public function elections()
+    {
+        return $this->hasOne('App\Election',[ "election_name","election_category"],'id');
+    }
 }

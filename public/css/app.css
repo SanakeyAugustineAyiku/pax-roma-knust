@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);@charset "UTF-8";
 
 .materialize-red {
   background-color: #e51c23 !important;
@@ -9441,6 +9441,76 @@ label.gender {
 .message.message-info {
   background-color: #797909;
   color: white;
+}
+
+.nav-dropdown-content li > a,
+.nav-dropdown-content li > span {
+  color: #3f51b5 !important;
+}
+
+.dropdown-content li > span {
+  color: black !important;
+}
+
+body#login-page,
+body#register-page {
+  background-image: url("/images/login-bg.jpg");
+  background-size: cover;
+}
+
+body#login-page .login,
+body#login-page .register,
+body#register-page .login,
+body#register-page .register {
+  margin-top: 100px;
+}
+
+body#login-page .login .card,
+body#login-page .register .card,
+body#register-page .login .card,
+body#register-page .register .card {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+body#login-page .login label,
+body#login-page .register label,
+body#register-page .login label,
+body#register-page .register label {
+  font-size: 16px;
+  color: #ccc;
+}
+
+body#login-page .login .input-field input,
+body#login-page .register .input-field input,
+body#register-page .login .input-field input,
+body#register-page .register .input-field input {
+  font-size: 22spx;
+  color: #ccc;
+}
+
+body#login-page .login .input-field button:hover,
+body#login-page .register .input-field button:hover,
+body#register-page .login .input-field button:hover,
+body#register-page .register .input-field button:hover {
+  padding: 0 10px;
+}
+
+body#login-page .login .input-field .material-icons,
+body#login-page .register .input-field .material-icons,
+body#register-page .login .input-field .material-icons,
+body#register-page .register .input-field .material-icons {
+  color: blue;
+}
+
+body#login-page .login .invalid-feedback,
+body#login-page .register .invalid-feedback,
+body#register-page .login .invalid-feedback,
+body#register-page .register .invalid-feedback {
+  color: #da5858;
+}
+
+.invalid-feedback {
+  color: #c41d1d;
 }
 
 .loader {

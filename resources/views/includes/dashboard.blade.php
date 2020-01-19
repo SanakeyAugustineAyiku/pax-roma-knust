@@ -10,22 +10,22 @@
                     <i class="material-icons">menu</i>
                 </a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li>
+                    {{-- <li>
                         <a href="{{route('admin.home')}}"><i class="material-icons">dashboard</i></a>
-                    </li>
+                    </li> --}}
 
                     <li>
                         <a class="dropdown-trigger dropdown-button" data-hover="true" data-constrainwidth="false" href="#!"
                             data-target="profile-dropdown">
                             <i class=" material-icons">account_circle</i>
                         </a>
-                        <ul id="profile-dropdown" class="dropdown-content" style="width: 300px !important">
+                        <ul id="profile-dropdown" class="dropdown-content nav-dropdown-content" style="width: 300px !important">
                             <li>
                                 <a href="#!"><i class="material-icons">cloud</i>notifications</a>
                             </li>
                             <li class="divider" tabindex="-1"></li>
                             <li>
-                                <a href="#!"> <i class="material-icons">exit_to_app</i>logout</a>
+                               @yield('logout')
                             </li>
                         </ul>
                     </li>

@@ -1,5 +1,25 @@
 @extends('includes.dashboard')
 
+@section('logout')
+    @if ( Auth::user()->hasRole('EC'))
+        <a class="waves-effect" style="text-decoration: none;" href="{{ route('ec.logout') }}" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+            <i class="material-icons">exit_to_app</i>{{ __('Logout') }}
+        </a>
+        <form id="logout-form" action="{{ route('ec.logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+    @else
+        <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.logout') }}" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+            <i class="material-icons">exit_to_app</i>{{ __('Logout') }}
+        </a>
+        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+    @endif
+
+@endsection
 <!-- mobile view side nav -->
 @section('sidenav')
 @parent
@@ -10,7 +30,7 @@
                 class="circle responsive-img" />
 
             <p style="margin-top: -13%;">
-                Admin name
+               {{ Auth::user()->name}}
             </p>
         </div>
     </div>
@@ -18,7 +38,8 @@
 
 <li><a class="waves-effect" href="{{route('admin.home')}}">Dashboard</a></li>
 <ul class="collapsible">
-    <li>
+@if (Auth::user()->hasRole('SUPER_ADMIN') || Auth::user()->hasRole('ADMIN'))
+   <li>
         <div class="collapsible-header waves-effect">
             <i class="material-icons">group</i>Manage Members
         </div>
@@ -36,6 +57,8 @@
             </ul>
         </div>
     </li>
+@endif
+@if (Auth::user()->hasRole('EC'))
     <li>
         <div class="collapsible-header waves-effect">
             <i class="material-icons">how_to_vote</i>Manage Elections
@@ -54,35 +77,37 @@
             </ul>
         </div>
     </li>
+ @endif
+ @if (Auth::user()->hasRole('SUPER_ADMIN') )
+ <li>
+     <div class="collapsible-header waves-effect">
+         <i class="material-icons">person</i>Manage Administrators
+     </div>
+     <div class="collapsible-body">
+         <ul>
+             <li id="products_product">
+                 <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.add.admin')}}">Add
+                     Admin</a>
+                 <a class="waves-effect" style="text-decoration: none;"
+                     href="{{ route('admin.view.admin')}}">Admin List</a>
+             </li>
+         </ul>
+     </div>
+ </li>
+ @endif
     <li>
         <div class="collapsible-header waves-effect">
-            <i class="material-icons">whatshot</i>Categories
+            <i class="material-icons">account_circle</i>Profile
         </div>
         <div class="collapsible-body">
             <ul>
-                <li id="categories_category">
-                    <a class="waves-effect" style="text-decoration: none;" href="#!">Category</a>
-                </li>
-
-                <li id="categories_sub_category">
-                    <a class="waves-effect" style="text-decoration: none;" href="#!">Sub Category</a>
-                </li>
-            </ul>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header waves-effect">
-            <i class="material-icons">whatshot</i>Brands
-        </div>
-        <div class="collapsible-body">
-            <ul>
-                <li id="brands_brand">
-                    <a class="waves-effect" style="text-decoration: none;" href="#!">Brand</a>
-                </li>
-
-                <li id="brands_sub_brand">
-                    <a class="waves-effect" style="text-decoration: none;" href="#!">Sub Brand</a>
-                </li>
+                    <li>
+                        <a href="#!"><i class="material-icons">cloud</i>notifications</a>
+                    </li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li>
+                        @yield('logout')
+                    </li>
             </ul>
         </div>
     </li>
@@ -99,32 +124,35 @@
                 class="circle responsive-img" />
 
             <p style="margin-top: -13%;">
-                Admin name
+                {{ Auth::user()->name }}
             </p>
         </div>
     </div>
 </li>
 <li><a class="waves-effect" href="{{route('admin.home')}}">Dashboard</a></li>
 <ul class="collapsible">
-    <li>
-        <div class="collapsible-header waves-effect">
-            <i class="material-icons">group</i>Manage Members
-        </div>
-        <div class="collapsible-body">
-            <ul>
-                <li id="users_seller">
-                    <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.add.member')}}">Add
-                        Member</a>
-                </li>
+    @if (Auth::user()->hasRole('SUPER_ADMIN') || Auth::user()->hasRole('ADMIN'))
+        <li>
+            <div class="collapsible-header waves-effect">
+                <i class="material-icons">group</i>Manage Members
+            </div>
+            <div class="collapsible-body">
+                <ul>
+                    <li id="users_seller">
+                        <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.add.member')}}">Add
+                            Member</a>
+                    </li>
 
-                <li id="users_customer">
-                    <a class="waves-effect" style="text-decoration: none;"
-                        href="{{ route('admin.view.Members')}}">Members List</a>
-                </li>
-            </ul>
-        </div>
-    </li>
-    <li>
+                    <li id="users_customer">
+                        <a class="waves-effect" style="text-decoration: none;"
+                            href="{{ route('admin.view.Members')}}">Members List</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    @endif
+    @if (Auth::user()->hasRole('EC'))
+        <li>
         <div class="collapsible-header waves-effect">
             <i class="material-icons">how_to_vote</i>Manage Elections
         </div>
@@ -142,38 +170,25 @@
             </ul>
         </div>
     </li>
+    @endif
+
+    @if (Auth::user()->hasRole('SUPER_ADMIN') )
     <li>
         <div class="collapsible-header waves-effect">
-            <i class="material-icons">whatshot</i>Categories
+            <i class="material-icons">person</i>Manage Administrators
         </div>
         <div class="collapsible-body">
             <ul>
-                <li id="categories_category">
-                    <a class="waves-effect" style="text-decoration: none;" href="#!">Category</a>
-                </li>
-
-                <li id="categories_sub_category">
-                    <a class="waves-effect" style="text-decoration: none;" href="#!">Sub Category</a>
+                <li id="products_product">
+                    <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.add.admin')}}">Add
+                        Admin</a>
+                    <a class="waves-effect" style="text-decoration: none;"
+                        href="{{ route('admin.view.admin')}}">Admin List</a>
                 </li>
             </ul>
         </div>
     </li>
-    <li>
-        <div class="collapsible-header waves-effect">
-            <i class="material-icons">whatshot</i>Brands
-        </div>
-        <div class="collapsible-body">
-            <ul>
-                <li id="brands_brand">
-                    <a class="waves-effect" style="text-decoration: none;" href="#!">Brand</a>
-                </li>
-
-                <li id="brands_sub_brand">
-                    <a class="waves-effect" style="text-decoration: none;" href="#!">Sub Brand</a>
-                </li>
-            </ul>
-        </div>
-    </li>
+    @endif
 </ul>
 @endsection
 

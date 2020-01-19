@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('css/app.css')}}">
         <style>
             html, body {
                 background-color: #fff;
@@ -84,17 +85,14 @@
                     Welcome
                 </div>
 
-                <div class="links">
-                    <a href="{{route('user.login')}}">Login</a>
-                    <a href="{{route('user.register')}}">Register</a>
-                    <a href="{{ route('admin.login')}}">Admin</a>
-                    {{-- <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a> --}}
+                <div class="links row">
+                    <a class="col s12 m3" href="{{route('user.login')}}">Member Login</a>
+                    <a class="col s12 m3" href="{{route('user.register')}}">Member Registeration</a>
+                    <a class="col s12 m3" href="{{ route('election.welcome')}}">Elections</a>
+                    <a class="col s12 m3" href="{{ route('admin.login')}}">Admin Login</a>
                 </div>
             </div>
         </div>
     </body>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </html>

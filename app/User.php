@@ -47,4 +47,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Check whether the user has a role
+     */
+    // public function hasRole($role)
+    // {
+    //   if ($this->roles()->where('role', $role)->first()) {
+    //     return true;
+    //   }
+    //   return false;
+    // }
 }

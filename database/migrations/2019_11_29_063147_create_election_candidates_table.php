@@ -18,10 +18,12 @@ class CreateElectionCandidatesTable extends Migration
             $table->string('name');
             $table->string('avatar');
             $table->string('position');
+            $table->string('election_name');
             $table->string('election_category');
             $table->integer('votes');
             $table->timestamps();
-            $table->foreign('election_category')->references('election_category')->on('elections')->onDelete('cascade');
+            $table->foreign(['election_category','election_name'])->references(['election_category','period'])->on('elections')->onDelete('cascade');
+            // $table->foreign('election_name')->references('period')->on('elections')->onDelete('cascade');
         });
     }
 

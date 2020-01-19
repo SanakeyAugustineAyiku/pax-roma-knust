@@ -17,9 +17,33 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+        switch ($guard) {
+            case 'admins':
+                if( Auth::guard($guard)->check()){
+                    return redirect()->route('admin.home');
+                }
+                break;
+
+            case 'voters':
+                if( Auth::guard($guard)->check()){
+                    return redirect()->route('elections.voter.home');
+                }
+                break;
+            case 'ec':
+                if( Auth::guard($guard)->check()){
+                    return redirect()->route('ec.home');
+                }
+                break;
+
+            case 'web':
+                if( Auth::guard($guard)->check()){
+                    return redirect()->route('user.home');
+                }
+                break;
         }
+        // if (Auth::guard($guard)->check()) {
+        //     return redirect('/home');
+        // }
 
         return $next($request);
     }

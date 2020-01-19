@@ -21,28 +21,53 @@
         </div>
                 <div class="row">
             <div class="input-field col s12 m12">
-                <input type="text" placeholder="eg 2020/2021" id="period" name="period" class="validate">
+                <input type="text"  id="period" name="period" class="validate @error('period') is-invalid @enderror">
                 <label for="period">Period</label>
+                @error('period')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12 m12">
-                <input type="text" id="start_date" name="start_date" class="datepicker">
+                <input type="text" id="start_date" name="start_date" class="datepicker @error('start_date') is-invalid @enderror">
                 <label for="start_date">Start Date</label>
+                @error('start_date')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="input-field col s12 m12">
-                <input id="start_time" name="start_time" type="text" class="timepicker">
+                <input id="start_time" name="start_time" type="text" class="timepicker @error('start_time') is-invalid @enderror">
                 <label for="start_time">Start Time</label>
+                @error('start_time')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12 m12">
-                <input type="text" id="end_date" name="end_date" class="datepicker">
+                <input type="text" id="end_date" name="end_date" class="datepicker @error('end_date') is-invalid @enderror">
                 <label for="end_date">End Date</label>
+                @error('end_date')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="input-field col s12 m12">
-                <input id="end_time" name="end_time" type="text" class="timepicker">
+                <input id="end_time" name="end_time" type="text" class="timepicker @error('end_time') is-invalid @enderror">
                 <label for="end_time">End Time</label>
+                @error('end_time')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div>
         <div class="input-field center">

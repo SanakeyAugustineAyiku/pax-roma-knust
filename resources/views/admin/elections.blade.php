@@ -1,7 +1,8 @@
 @extends('admin.dashboard')
 
 @section('dashcontent')
-    @if ($elections)
+    @if ($elections && count($elections) > 0)
+  
         <table class="striped highlight">
             <thead>
                 <tr>
@@ -9,6 +10,7 @@
                     <th>Period</th>
                     <th>Start </th>
                     <th>End</th>
+                    <th>Status</th>
                 </tr>
             </thead>
 
@@ -19,6 +21,7 @@
                         <td>{{$election->period}}</td>
                         <td>{{$election->start}}</td>
                         <td>{{ $election->end}}</td>
+                        <td>{{$election->status}}</td>
                     </tr>
                  @endforeach
             </tbody>

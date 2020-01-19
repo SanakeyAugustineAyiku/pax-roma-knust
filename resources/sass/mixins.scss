@@ -1,0 +1,32 @@
+@mixin auth {
+    background-image: url('/images/login-bg.jpg');
+    background-size: cover;
+    .login, .register{
+        margin-top: 100px;
+        .card{
+            background: rgba(0,0,0,.6);
+        }
+        label{
+            font-size: 16px;
+            color:#ccc;
+        }
+        .input-field {
+            input{
+            font-size: 22spx;
+            color:#ccc;
+        }
+
+        button{
+            &:hover{
+                padding: 0 10px;
+            }
+        }
+        .material-icons{
+            color:blue;
+        }
+    }
+        .invalid-feedback{
+            color: rgb(218, 88, 88);
+        }
+    }
+}
